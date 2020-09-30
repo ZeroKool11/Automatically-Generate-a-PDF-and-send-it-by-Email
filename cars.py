@@ -52,12 +52,22 @@ def cars_dict_to_table(car_data):
     table_data.append([item["id"], format_car(item["car"]), item["price"], item["total_sales"]])
   return table_data
 
+def change_environ_variable(variable, value):
+  try:
+    os.environ[variable] = value
+    return True
+  except Exception as e:
+    print("No se logro cambiar la variable de entorno " + variable + ". " + str(e))
+    return False
 
 def main(argv):
   """Process the JSON data and generate a full report out of it."""
   carPath = os.path.realpath('../car_sales.json')
-  result = subprocess.run(['export LC_ALL="en_US.UTF-8"'])
-  print(result.returncode)  
+
+  #Changint the environ variable LC_ALL
+  if not change_environ_variable('LC_ALL','en_US.UTF-8'): exit()
+  
+  
   #data = load_data("car_sales.json")
   #summary = process_data(data)
   #print(summary)
