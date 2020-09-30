@@ -4,28 +4,28 @@ import subprocess
 import shutil as sh
 import os
 
-def ChangePermissions():
-# Cambiar permisos de example.py
-	result = subprocess.run(['chmod','o+wx','example.py'])
+def ChangePermissions(file):
+# Cambiar permisos de el archivo que haya en la variable file
+	result = subprocess.run(['chmod','o+wx',file])
 	if result.returncode != 0:
-		print("No se lograron cambiar los permisos de el archivo example.py. " + str(result))
+		print("No se lograron cambiar los permisos de el archivo " + file +  ". " + str(result))
 		return False
 	return True
 
-def CopyFile():
-# Copiar example.py a la ruta correcta
-	destPath = os.path.realpath('../scripts/example.py')
+def CopyFile(file):
+# Copiar el archivo que haya en la variable fileDest a la ruta correcta
+	destPath = os.path.realpath('../scripts/' + file)
 	try:
-		sh.copy("example.py", destPath)
+		sh.copy(file, destPath)
 		return(True)
 	except Exception as e:
-		print("No se logro copiar el archivo example.py. " + str(e))
+		print("No se logro copiar el archivo " + file + ". " + str(e))
 		return(False)
 
 
 def main():
-	if not ChangePermissions(): exit()
-	if not CopyFile(): exit()
+	if not ChangePermissions('example.py'): exit()
+	if not CopyFile('example.py'): exit()
 	
 
 
