@@ -24,6 +24,7 @@ def CopyFile(file):
 
 
 def main():
+	#These two conditionals solve the first part of the lab
 	if not ChangePermissions('example.py'): exit()
 	if not CopyFile('example.py'): exit()
 	

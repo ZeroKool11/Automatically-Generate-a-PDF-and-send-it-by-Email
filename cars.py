@@ -3,7 +3,8 @@
 import json
 import locale
 import sys
-
+import subprocess
+import os
 
 def load_data(filename):
   """Loads the contents of filename as a JSON file."""
@@ -54,9 +55,12 @@ def cars_dict_to_table(car_data):
 
 def main(argv):
   """Process the JSON data and generate a full report out of it."""
-  data = load_data("car_sales.json")
-  summary = process_data(data)
-  print(summary)
+  carPath = os.path.realpath('../car_sales.json')
+  result = subprocess.run(['export LC_ALL="en_US.UTF-8"'])
+  print(result.returncode)  
+  #data = load_data("car_sales.json")
+  #summary = process_data(data)
+  #print(summary)
   # TODO: turn this into a PDF report
 
   # TODO: send the PDF report as an email attachment
