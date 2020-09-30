@@ -37,14 +37,16 @@ def process_data(data):
       max_revenue = item
     # TODO: also handle max sales
     if item["total_sales"] > max_sales["sales"]:
-      max_sales["car_model"] = item[""]
+      max_sales["car_model"] = item["car"]["car_model"]
+      max_sales["sales"] = item["total_sales"]
     # TODO: also handle most popular car_year
 
   summary = [
     "The {} generated the most revenue: ${}".format(
       format_car(max_revenue["car"]), max_revenue["revenue"]),
+    "The {} had the most sales: {}".format(max_sales["car_model"],max_sales["sales"])
   ]
-
+  
   return summary
 
 
@@ -71,8 +73,9 @@ def main(argv):
   if not change_environ_variable('LC_ALL','en_US.UTF-8'): exit()
   #If the previous line does not work this will work  
   locale.setlocale(locale.LC_ALL, 'en_US.UTF8')
-
+  
   data = load_data(carPath)
+  #print(data[0]['car']['car_model'])
   summary = process_data(data)
   print(summary)
   # TODO: turn this into a PDF report
