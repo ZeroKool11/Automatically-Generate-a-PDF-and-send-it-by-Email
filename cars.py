@@ -18,6 +18,7 @@ def format_car(car):
       car["car_make"], car["car_model"], car["car_year"])
 
 def years_sales(dic,key,value):
+  """Creates a new element in the dictionary with his value or adding the value if the elemente already exists"""
   if not key in dic:
     dic[key] = value
   else:
@@ -25,6 +26,7 @@ def years_sales(dic,key,value):
   return dic
 
 def max_sales_year(dic):
+  """Finds the year with the most sales"""
   year = max(dic, key=dic.get)
   sales = dic[year]
   result = {"year": year, "sales": sales}
