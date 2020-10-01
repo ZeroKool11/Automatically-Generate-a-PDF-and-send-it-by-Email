@@ -96,7 +96,7 @@ def main(argv):
   summary = process_data(data)
   print(summary)
   # TODO: turn this into a PDF report
-  reportos.generated("/tmp/cars.pdf",)
+  reports.generate("/tmp/cars.pdf","Report",summary[1] + "<br/>" + summary[0] + "<br/> " + summary[2],cars_dict_to_table(data))
   # TODO: send the PDF report as an email attachment
 
 
