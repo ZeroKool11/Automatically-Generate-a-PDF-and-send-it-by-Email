@@ -74,6 +74,7 @@ def cars_dict_to_table(car_data):
   return table_data
 
 def change_environ_variable(variable, value):
+  """Setting the correct environ variable"""
   try:
     os.environ[variable] = value
     return True
