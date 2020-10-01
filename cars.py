@@ -5,6 +5,7 @@ import locale
 import sys
 import subprocess
 import os
+import reports
 
 def load_data(filename):
   """Loads the contents of filename as a JSON file."""
@@ -95,7 +96,7 @@ def main(argv):
   summary = process_data(data)
   print(summary)
   # TODO: turn this into a PDF report
-
+  reportos.generated("/tmp/cars.pdf",)
   # TODO: send the PDF report as an email attachment
 
 
